@@ -1,1 +1,9 @@
+from fastapi import FastAPI
+from api.webhook import router
+from database.db import Base, engine
 
+app = FastAPI(title="Business Chatbot MVP")
+
+Base.metadata.create_all(bind=engine)
+
+app.include_router(router)
